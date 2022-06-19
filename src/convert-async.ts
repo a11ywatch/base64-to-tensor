@@ -1,5 +1,7 @@
 import { base64Replacer } from "./trim-base64";
-import { decodeImage, decodeImageAsync } from "./decode";
+import { decodeImageAsync } from "./decode";
+
+let _sharp;
 
 /**
  * This operation converts a base64 into a Tensor3D.
@@ -7,7 +9,7 @@ import { decodeImage, decodeImageAsync } from "./decode";
  * @param base64 a valid base64 encoded string.
  * @returns tf.Tensor3D
  */
-export const convert = (base64: string) => {
+export const convertAsync = async (base64: string) => {
   if (!base64) {
     return null;
   }
@@ -19,5 +21,5 @@ export const convert = (base64: string) => {
     typedArray[i] = bufferObject[i];
   }
 
-  return decodeImage(typedArray, 3);
+  return await decodeImageAsync(typedArray, 3);
 };
