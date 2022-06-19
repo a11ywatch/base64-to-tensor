@@ -30,10 +30,12 @@
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "eslint": "^8.18.0",
+    "isomorphic-unfetch": "^3.1.0",
     "jest": "^26.6.3",
     "jest-config": "^26.6.3",
     "jpeg-js": "^0.4.4",
     "sharp": "^0.30.6",
+    "tensornet": "^1.0.9",
     "ts-node-dev": "^2.0.0",
     "tscpaths": "^0.0.9",
     "typescript": "^3.7.5"

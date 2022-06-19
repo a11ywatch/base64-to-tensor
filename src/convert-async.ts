@@ -24,9 +24,12 @@ export const convertAsync = async (base64: string) => {
  * @returns tf.Tensor3D
  */
 export const decodeImageAsync = async (contents: Uint8Array) => {
-  const { data, info } = await sharp(Buffer.from(contents))
-    .jpeg()
+  const { data, info } = await sharp(Buffer.from(contents), { unlimited: true })
+    .withMetadata()
+    .toFormat("jpeg")
     .toBuffer({ resolveWithObject: true });
 
-  return convertBuffer(data.buffer, [info.height, info.width, 3]);
+  const pixelArray = new Uint8Array(data);
+
+  return convertBuffer(pixelArray, [info.height, info.width, info.channels]);
 };

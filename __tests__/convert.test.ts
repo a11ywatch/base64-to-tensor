@@ -14,10 +14,10 @@ describe("convert base64 to tensor", () => {
     expect(tensor).toEqual({
       kept: false,
       isDisposedInternal: false,
-      shape: [189, 300, 3],
+      shape: [113, 150, 3],
       dtype: "int32",
-      size: 170100,
-      strides: [900, 3],
+      size: 50850,
+      strides: [450, 3],
       dataId: { id: 1 },
       id: 0,
       rankType: "3",
@@ -35,10 +35,10 @@ describe("convert base64 to tensor", () => {
     expect(tensor).toEqual({
       kept: false,
       isDisposedInternal: false,
-      shape: [189, 300, 3],
+      shape: [113, 150, 3],
       dtype: "int32",
-      size: 170100,
-      strides: [900, 3],
+      size: 50850,
+      strides: [450, 3],
       dataId: { id: 3 }, // next tensor in line
       id: 1,
       rankType: "3",

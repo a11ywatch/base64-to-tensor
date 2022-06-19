@@ -20,5 +20,6 @@ export const convertBuffer = (data, shape) => {
 
     offset += 4;
   }
+
   return tensor3d(buffer, [height, width, channels]);
 };

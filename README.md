@@ -32,7 +32,7 @@ import "@tensorflow/tfjs-backend-wasm";
 await setBackend("wasm");
 
 const tensor = convert(mybase64); // The base64 must be a valid jpeg image.
-// or use native sharp for increased performance 2x
+// or use native sharp for increased performance 2x [Expiremental]
 const tensor = await convertAsync(mybase64);
 // output example
 // {
