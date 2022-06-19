@@ -1,7 +1,7 @@
 import "@tensorflow/tfjs-backend-wasm";
 import { ready, setBackend } from "@tensorflow/tfjs-core";
 import data from "../__mocks__/buffer.json";
-import { decodeImage } from "../src/decode";
+import { decodeImage } from "../src/convert";
 
 describe("decode jpeg data", () => {
   test("Decodes a Uint8Array to Tensor3d", async () => {

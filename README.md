@@ -13,6 +13,15 @@ npm i base64-to-tensor --save
 ## Getting Started
 
 Make sure to have `@tensorflow/tfjs-core` installed and a valid tensorflow backend set.
+You also need to pick between [sync package jpeg-js](https://github.com/jpeg-js/jpeg-js) or [async package sharp](https://github.com/lovell/sharp).
+
+```sh
+# pure js full sync blocking installation
+npm i @tensorflow/tfjs-core jpeg-js
+# if going to use async non blocking
+npm i @tensorflow/tfjs-core sharp
+```
+
 View the [convert.test.ts](./__tests__/convert.test.ts) file for an example setup.
 
 ```ts
@@ -20,7 +29,6 @@ import { convert, convertAsync } from "base64-to-tensor";
 import { setBackend } from "@tensorflow/tfjs-core";
 
 const tensor = convert(mybase64); // The base64 must be a valid jpeg image.
-
 // or use native sharp for increased performance 2x
 const tensor = await convertAsync(mybase64);
 // output example
@@ -31,7 +39,7 @@ const tensor = await convertAsync(mybase64);
 //       dtype: "int32",
 //       size: 170100,
 //       strides: [900, 3],
-//       dataId: { id: 3 }, // next tensor in line
+//       dataId: { id: 1 },
 //       id: 1,
 //       rankType: "3",
 //     }

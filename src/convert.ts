@@ -1,5 +1,6 @@
-import { base64Replacer } from "./trim-base64";
-import { decodeImage, decodeImageAsync } from "./decode";
+import { decode } from "jpeg-js";
+import { convertBuffer } from "./decode";
+import { toTypedArray } from "./typed-array";
 
 /**
  * This operation converts a base64 into a Tensor3D.
@@ -11,13 +12,19 @@ export const convert = (base64: string) => {
   if (!base64) {
     return null;
   }
-  const bufferObject = Buffer.from(base64Replacer(base64), "base64");
-  const arrayBuffer = new ArrayBuffer(bufferObject.length);
-  const typedArray = new Uint8Array(arrayBuffer);
+  const typedArray = toTypedArray(base64);
 
-  for (let i = 0; i < bufferObject.length; ++i) {
-    typedArray[i] = bufferObject[i];
-  }
+  return decodeImage(typedArray);
+};
 
-  return decodeImage(typedArray, 3);
+/**
+ * Decode a Uint8Array into Tensor3d
+ *
+ * @param contents a valid Uint8Array.
+ * @returns tf.Tensor3D
+ */
+export const decodeImage = (contents: Uint8Array) => {
+  const { data, width, height } = decode(contents, { useTArray: true });
+
+  return convertBuffer(data, [height, width, 3]);
 };
