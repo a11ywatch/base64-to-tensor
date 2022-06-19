@@ -1,6 +1,12 @@
 import { tensor3d } from "@tensorflow/tfjs-core";
 import { decode } from "jpeg-js";
 
+/**
+ * Decode a Uint8Array into Tensor3d
+ *
+ * @param contents a valid Uint8Array.
+ * @returns tf.Tensor3D
+ */
 export const decodeImage = (contents: Uint8Array, channels: 0 | 1 | 3 = 3) => {
   const { width, height, data } = decode(contents, { useTArray: true });
   const buffer = new Uint8Array(width * height * 3);

@@ -1,11 +1,12 @@
 {
   "name": "base64-to-tensor",
-  "version": "1.0.18",
+  "version": "1.0.22",
   "description": "a pure js convert a base64 to a tensor object for node",
   "main": "dist/convert.js",
   "scripts": {
     "test": "jest",
-    "prepare": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist"
+    "prepare": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist",
+    "lint": "eslint --ext .ts src"
   },
   "repository": {
     "type": "git",
@@ -27,7 +28,11 @@
     "@swc/core": "^1.2.204",
     "@swc/jest": "^0.2.21",
     "@tensorflow/tfjs-backend-wasm": "^3.18.0",
+    "@tensorflow/tfjs-core": "3.18.0",
     "@types/jest": "^26.0.20",
+    "@typescript-eslint/eslint-plugin": "^5.28.0",
+    "@typescript-eslint/parser": "^5.28.0",
+    "eslint": "^8.18.0",
     "jest": "^26.6.3",
     "jest-config": "^26.6.3",
     "ts-node-dev": "^2.0.0",

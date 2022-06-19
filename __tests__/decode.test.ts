@@ -1,14 +1,14 @@
 import "@tensorflow/tfjs-backend-wasm";
-import { convert } from "../src/convert";
-import { SAMPLE } from "../__mocks__/sample";
 import { ready, setBackend } from "@tensorflow/tfjs-core";
+import data from "../__mocks__/buffer.json";
+import { decodeImage } from "../src/decode";
 
-describe("convert base64 to tensor", () => {
-  test("handle correct jpeg data", async () => {
+describe("decode jpeg data", () => {
+  test("Decodes a Uint8Array to Tensor3d", async () => {
     await setBackend("wasm"); // set tensorflow wasm backend
     await ready();
 
-    const tensor = convert(SAMPLE);
+    const tensor = decodeImage(new Uint8Array(data));
 
     expect(tensor).toEqual({
       kept: false,
@@ -21,14 +21,5 @@ describe("convert base64 to tensor", () => {
       id: 0,
       rankType: "3",
     });
-  });
-
-  test("handle missing jpeg data", async () => {
-    await setBackend("wasm"); // set tensorflow wasm backend
-    await ready();
-
-    const tensor = convert("");
-
-    expect(tensor).toEqual(null);
   });
 });

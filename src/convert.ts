@@ -15,7 +15,7 @@ export const convert = (base64: string) => {
   const arrayBuffer = new ArrayBuffer(bufferObject.length);
   const typedArray = new Uint8Array(arrayBuffer);
 
-  for (var i = 0; i < bufferObject.length; ++i) {
+  for (let i = 0; i < bufferObject.length; ++i) {
     typedArray[i] = bufferObject[i];
   }
 
