@@ -10,12 +10,14 @@ npm i base64-to-tensor --save
 
 ## Getting Started
 
-Make sure to have `@tensorflow/tfjs-core` installed.
+Make sure to have `@tensorflow/tfjs-core` installed and a valid tensorflow backend set.
+View the [convert.test.ts](./__tests__/convert.test.ts) file for an example setup.
 
 ```ts
 import { convert } from "base64-to-tensor";
+import { setBackend } from "@tensorflow/tfjs-core";
 
-const tensor = convert(mybase64);
+const tensor = convert(mybase64); // The base64 must be a valid jpeg image.
 ```
 
 ## Why
