@@ -27,6 +27,9 @@ View the [convert.test.ts](./__tests__/convert.test.ts) file for an example setu
 ```ts
 import { convert, convertAsync } from "base64-to-tensor";
 import { setBackend } from "@tensorflow/tfjs-core";
+import "@tensorflow/tfjs-backend-wasm";
+
+await setBackend("wasm");
 
 const tensor = convert(mybase64); // The base64 must be a valid jpeg image.
 // or use native sharp for increased performance 2x

@@ -3,7 +3,7 @@
     "module": "commonjs",
     "noImplicitAny": false,
     "lib": ["es2016"],
-    "removeComments": true,
+    "removeComments": false,
     "preserveConstEnums": true,
     "sourceMap": true,
     "outDir": "dist/",
