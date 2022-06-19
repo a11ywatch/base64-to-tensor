@@ -1,0 +1,37 @@
+{
+  "name": "base64-to-tensor",
+  "version": "1.0.18",
+  "description": "a pure js convert a base64 to a tensor object for node",
+  "main": "dist/convert.js",
+  "scripts": {
+    "test": "npm test",
+    "prepare": "tsc --project tsconfig.json && tscpaths -p tsconfig.json -s ./src -o ./dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/A11yWatch/base64-to-tensor.git"
+  },
+  "keywords": [
+    "tensorflow"
+  ],
+  "author": "Jeff Mendez",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/A11yWatch/base64-to-tensor/issues"
+  },
+  "homepage": "https://github.com/A11yWatch/base64-to-tensor#readme",
+  "dependencies": {
+    "jpeg-js": "^0.4.4"
+  },
+  "devDependencies": {
+    "@types/jest": "^26.0.20",
+    "jest": "^26.6.3",
+    "jest-config": "^26.6.3",
+    "ts-jest": "^26.5.0",
+    "tscpaths": "^0.0.9",
+    "typescript": "^3.7.5"
+  },
+  "peerDependencies": {
+    "@tensorflow/tfjs-core": "*"
+  }
+}
