@@ -25,11 +25,11 @@ export const convertAsync = async (base64: string) => {
  */
 export const decodeImageAsync = async (contents: Uint8Array) => {
   const { data, info } = await sharp(Buffer.from(contents), { unlimited: true })
-    .withMetadata()
-    .toFormat("jpeg")
+    .toFormat("jpeg", { mozjpeg: true })
+    .raw()
     .toBuffer({ resolveWithObject: true });
 
   const pixelArray = new Uint8Array(data);
 
-  return convertBuffer(pixelArray, [info.height, info.width, info.channels]);
+  return convertBuffer(pixelArray, [info.height, info.width, 3]);
 };
