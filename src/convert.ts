@@ -1,6 +1,6 @@
 import { decode } from "jpeg-js";
 import { convertBuffer } from "./decode";
-import { toTypedArray } from "./typed-array";
+import { base64Replacer } from "./trim-base64";
 
 /**
  * This operation converts a base64 into a Tensor3D.
@@ -12,9 +12,8 @@ export const convert = (base64: string) => {
   if (!base64) {
     return null;
   }
-  const typedArray = toTypedArray(base64);
 
-  return decodeImage(typedArray);
+  return decodeImage(Buffer.from(base64Replacer(base64), "base64"));
 };
 
 /**
