@@ -1,6 +1,6 @@
 {
   "name": "base64-to-tensor",
-  "version": "1.2.5",
+  "version": "1.2.8",
   "description": "a pure js convert a base64 to a tensor object for node",
   "main": "dist/index.js",
   "scripts": {
@@ -27,6 +27,7 @@
     "@tensorflow/tfjs-backend-wasm": "^3.18.0",
     "@tensorflow/tfjs-core": "3.18.0",
     "@types/jest": "^26.0.20",
+    "@types/sharp": "^0.30.4",
     "@typescript-eslint/eslint-plugin": "^5.28.0",
     "@typescript-eslint/parser": "^5.28.0",
     "eslint": "^8.18.0",
@@ -41,8 +42,6 @@
     "typescript": "^3.7.5"
   },
   "peerDependencies": {
-    "@tensorflow/tfjs-core": "*",
-    "jpeg-js": "*",
-    "sharp": "*"
+    "@tensorflow/tfjs-core": "*"
   }
 }

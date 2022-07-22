@@ -1,6 +1,5 @@
 import { convertBuffer } from "./decode";
 import { toTypedArray } from "./typed-array";
-import sharp from "sharp";
 
 /**
  * This operation converts a base64 into a Tensor3D.
@@ -24,7 +23,10 @@ export const convertAsync = async (base64: string) => {
  * @returns tf.Tensor3D
  */
 export const decodeImageAsync = async (contents: Uint8Array) => {
-  const { data, info } = await sharp(Buffer.from(contents), { unlimited: true })
+  const sharp = await import("sharp");
+
+  const { data, info } = await sharp
+    .default(Buffer.from(contents), { unlimited: true })
     .toFormat("jpeg", { mozjpeg: true })
     .raw()
     .toBuffer({ resolveWithObject: true });
