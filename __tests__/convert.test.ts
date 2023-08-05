@@ -4,11 +4,13 @@ import { convertAsync } from "../src/convert-async";
 import { SAMPLE } from "../__mocks__/sample";
 import { ready, setBackend } from "@tensorflow/tfjs-core";
 
+beforeAll(async () => {
+  await setBackend("wasm"); // set tensorflow wasm backend
+  await ready();
+});
+
 describe("convert base64 to tensor", () => {
   test("use pure js", async () => {
-    await setBackend("wasm"); // set tensorflow wasm backend
-    await ready();
-
     const tensor = convert(SAMPLE);
 
     expect(tensor).toEqual({
@@ -27,9 +29,6 @@ describe("convert base64 to tensor", () => {
   });
 
   test("use sharp", async () => {
-    await setBackend("wasm"); // set tensorflow wasm backend
-    await ready();
-
     const tensor = await convertAsync(SAMPLE);
 
     expect(tensor).toEqual({
@@ -48,25 +47,16 @@ describe("convert base64 to tensor", () => {
   });
 
   test("handle missing jpeg data sync", async () => {
-    await setBackend("wasm"); // set tensorflow wasm backend
-    await ready();
-
     const tensor = convert("");
 
     expect(tensor).toEqual(null);
   });
   test("handle missing jpeg data async", async () => {
-    await setBackend("wasm"); // set tensorflow wasm backend
-    await ready();
-
     const tensor = await convertAsync("");
 
     expect(tensor).toEqual(null);
   });
   test("handle missing jpeg data error async", async () => {
-    await setBackend("wasm"); // set tensorflow wasm backend
-    await ready();
-
     return expect(convertAsync("dqdw")).rejects.toEqual(
       new Error("Input Buffer is empty")
     );
